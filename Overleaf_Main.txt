@@ -1,0 +1,195 @@
+\documentclass[12pt,a4paper]{report}
+
+% ---------------- Language + encoding ----------------
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[ngerman,english]{babel}
+\usepackage{csquotes}
+\usepackage{amsmath,amssymb}
+
+% --- Fonts (Palatino + Helvetica + Courier) ---
+\usepackage{mathpazo}
+\usepackage[scaled=.95]{helvet}
+\usepackage{courier}
+
+% ---------------- Formatting + packages ----------------
+\usepackage{booktabs}
+\usepackage{caption}
+\usepackage{siunitx}
+\usepackage{graphicx}
+\usepackage{tabularx}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{rotating}
+\usepackage{placeins}
+\usepackage[a4paper,top=3cm,bottom=3cm,left=3cm,right=2.5cm]{geometry}
+
+\newcommand{\cmark}{\checkmark}
+\newcommand{\xmark}{\(\times\)}
+
+\usepackage{newunicodechar}
+\newunicodechar{₂}{$_2$}
+\newunicodechar{ }{~}
+
+\newcolumntype{L}{>{\raggedright\arraybackslash}X}
+\newcolumntype{R}{>{\raggedleft\arraybackslash}p{0.11\textheight}}
+\newcolumntype{P}[1]{>{\raggedright\arraybackslash}p{#1}}
+\newcolumntype{Q}[1]{>{\raggedleft\arraybackslash}p{#1}}
+
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,shapes.geometric,positioning,fit}
+
+% ---------------- Bibliography ----------------
+\usepackage[backend=biber,style=numeric,citestyle=numeric]{biblatex}
+\addbibresource{referencesTest.bib}
+
+% ---------------- Section + chapter formatting ----------------
+\usepackage{titlesec}
+\usepackage{fancyhdr}
+
+\titleformat{\chapter}[display]
+  {\normalfont\bfseries}
+  {\Huge Kapitel \thechapter}
+  {0.5ex}
+  {\LARGE}
+
+\titlespacing*{\chapter}{0pt}{-5pt}{20pt}
+\titlespacing*{\section}{0pt}{10pt}{5pt}
+\titlespacing*{\subsection}{0pt}{8pt}{4pt}
+\titlespacing*{\subsubsection}{0pt}{6pt}{3pt}
+
+% ---------------- Header/footer setup ----------------
+\setlength{\headheight}{14pt}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+
+\fancypagestyle{chapters}{\fancyhf{}\rhead{\small Kapitel \thechapter}\rfoot{\thepage}}
+\fancypagestyle{chapterplain}{\fancyhf{}\rhead{\small Kapitel \thechapter}\rfoot{\thepage}}
+
+\fancypagestyle{appendixstyle}{\fancyhf{}\rhead{\small Appendix}\rfoot{\thepage}}
+\fancypagestyle{appendixplain}{\fancyhf{}\rhead{\small Appendix}\rfoot{\thepage}}
+
+\fancypagestyle{bibliostyle}{\fancyhf{}\rhead{\small Bibliography}\rfoot{\thepage}}
+\fancypagestyle{biblioplain}{\fancyhf{}\rhead{\small Bibliography}\rfoot{\thepage}}
+
+% ---------------- Clickable links (load last) -------------
+\usepackage[unicode,hidelinks]{hyperref}
+\hypersetup{
+  pdftitle={Entwicklung und Evaluation einer spezifischen Energiekennzahl für Gasverteilnetzanlagen},
+  pdfauthor={Tarig Mohamed Ibrahim Ali},
+  pdfsubject={Masterarbeit},
+  pdfcreator={LaTeX},
+  pdfproducer={LaTeX},
+  bookmarksopen=true,
+  bookmarksnumbered=true,
+  linktoc=all
+}
+
+% ---------------- Title meta ----------------
+\title{Entwicklung und Evaluation einer spezifischen Energiekennzahl\\
+für Gasverteilnetzanlagen}
+\author{Tarig Mohamed Ibrahim Ali}
+\date{\today}
+
+\begin{document}
+
+% ---------------- Simple title page ----------------
+\begin{titlepage}
+  \centering
+  {\Large Masterarbeit\par}
+  \vspace{8mm}
+  {\huge\bfseries \MakeUppercase{Entwicklung und Evaluation einer spezifischen Energiekennzahl für Gasverteilnetzanlagen}\par}
+  \vspace{12mm}
+  {\large Autor: \textbf{Tarig Mohamed Ibrahim Ali}\par}
+  \vfill
+  {\large \today\par}
+\end{titlepage}
+
+% ---------------- Front matter ----------------
+\pagenumbering{Roman}
+\setcounter{page}{1}
+
+\tableofcontents
+\clearpage
+
+% ---------------- Abstract (empty placeholder) ----------------
+\chapter*{Abstract}
+\addcontentsline{toc}{chapter}{Abstract}
+(Put abstract here)
+
+% ---------------- Danksagung (empty placeholder) ----------------
+\chapter*{Danksagung}
+\addcontentsline{toc}{chapter}{Danksagung}
+(Put acknowledgments here)
+
+% ---------------- Abbreviations/Symbols (with placeholders) ----------------
+\begin{table}[htbp]
+\centering
+\caption{Im Dokument verwendete Abkürzungen und Symbole}
+\label{tab:abku}
+\begin{tabularx}{\textwidth}{@{}l X c@{}}
+\toprule
+\textbf{Abkürzung/Symbol} & \textbf{Bedeutung} & \textbf{Einheit} \\
+\midrule
+(T1 : Tarig 1) & (Placeholder) & (—) \\
+(T2 : Tarig 2) & (Placeholder) & (—) \\
+(T3 : Tarig 3) & (Placeholder) & (—) \\
+(T4 : Tarig 4) & (Placeholder) & (—) \\
+(T5 : Tarig 5) & (Placeholder) & (—) \\
+(T6 : Tarig 6) & (Placeholder) & (—) \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+% ---------------- Main Document ----------------
+\cleardoublepage
+\pagenumbering{arabic}
+\setcounter{page}{1}
+
+\pagestyle{chapters}
+\makeatletter
+\let\ps@plain\ps@chapterplain
+\makeatother
+
+% Keep your original chapter includes:
+\include{1. Chapter-Eins/Kapitel 1}
+\include{2. Chapter-Zwei/Kapitel 2}
+\include{3. Chapter-Drei/Kapitel 3}
+\include{4. Chapter-Vier/Kapitel 4}
+\include{5. Chapter-Fünf/Kapitel 5}
+\include{6. Chapter-Sechs/Kapitel 6}
+
+% ---------------- Appendix ----------------
+\cleardoublepage
+\appendix
+\pagestyle{appendixstyle}
+\makeatletter
+\let\ps@plain\ps@appendixplain
+\makeatother
+
+\include{Appendix/Appendix-A}
+\include{Selbst} % remove if not needed
+
+% ---------------- Bibliography ----------------
+\cleardoublepage
+\pagestyle{bibliostyle}
+\makeatletter
+\let\ps@plain\ps@biblioplain
+\makeatother
+
+\phantomsection
+\addcontentsline{toc}{chapter}{Bibliography}
+\printbibliography
+
+% ---------------- Lists at the very end ----------------
+\cleardoublepage
+\phantomsection
+\addcontentsline{toc}{chapter}{Abbildungsverzeichnis}
+\listoffigures
+
+\cleardoublepage
+\phantomsection
+\addcontentsline{toc}{chapter}{Tabellenverzeichnis}
+\listoftables
+
+\end{document}
